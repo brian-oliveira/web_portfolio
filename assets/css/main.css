@@ -2998,7 +2998,7 @@ input, select, textarea {
 				-moz-transform: translateX(23em);
 				-webkit-transform: translateX(23em);
 				-ms-transform: translateX(23em);
-				transform: translateX(-23em);
+				transform: translateX(-100%);
 				left: 0;
 				right: auto;
 			}
@@ -3120,7 +3120,7 @@ input, select, textarea {
 				-moz-transform: translateX(0);
 				-webkit-transform: translateX(0);
 				-ms-transform: translateX(0);
-				transform: translateX(0);
+				transform: translateX(0) !important;
 			}
 
 	}
@@ -3140,7 +3140,7 @@ input, select, textarea {
 			}
 
 			h2 {
-				font-size: 1.75em;
+				font-size: 1.5em;
 			}
 
 			h3 {
@@ -3200,8 +3200,9 @@ input, select, textarea {
 				-moz-transform: translateX(17em);
 				-webkit-transform: translateX(17em);
 				-ms-transform: translateX(17em);
-				transform: translateX(17em);
-				right: 0;
+				left: 0;
+				right: auto;
+				transform: translateX(-100%);
 			}
 
 				#header > header {
@@ -3225,6 +3226,17 @@ input, select, textarea {
 
 				#header > footer {
 					padding: 1.5em;
+				}
+
+				body.header-visible #header {
+					transform: translateX(0);
+				}
+				/* Empurra o conteúdo principal para a direita */
+				body.header-visible #wrapper {
+					transform: translateX(17em) !important; /* Menu costuma ser menor aqui */
+    			} 
+				body.header-visible #titleBar {
+					transform: translateX(23em); /* Largura do seu menu */
 				}
 
 		/* Main */
@@ -3253,18 +3265,27 @@ input, select, textarea {
 
 		/* Header Panel */
 
-			#titleBar .toggle {
-				height: 4em;
-				width: 6em;
-				left: 0;
-        		right: auto;
+			#titleBar {
+				background: #0f172a; /* Slate quase preto para combinar com o header */
 			}
 
+			#titleBar .title {
+				padding-left: 4.5em; /* Empurra o nome 'Brian Oliveira' para o lado do botão */
+				text-align: left;
+				font-size: 1.1em;
+			}
+
+			#titleBar .toggle {
+					left: 0;   /* Fixa o botão na esquerda */
+					right: auto;
+					width: 4em;
+				}
+
 				#titleBar .toggle:before {
-					font-size: 14px;
-					width: 44px;
+					background: #2563eb; /* O azul de destaque que usamos nas habilidades */
+					content: '\f0c9';    /* Garante que o ícone de barras apareça */
 					left: 0;
-        			right: auto;
+					width: 4em;
 				}
 
 			body.header-visible #wrapper, body.header-visible #titleBar {
@@ -3420,3 +3441,5 @@ input, select, textarea {
 			margin: 0;
 			padding-left: 1.2em;
 		}
+
+		
